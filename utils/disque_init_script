@@ -13,7 +13,7 @@
 
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/usr/bin/disque-server
+DAEMON=/usr/local/bin/disque-server
 DAEMON_ARGS=/etc/disque/disque.conf
 NAME=disque-server
 DESC=disque-server
