@@ -1,0 +1,32 @@
+#! /bin/sh
+# install disque as a service in Ubuntu
+
+sudo groupadd -r disque
+sudo useradd -r -g disque disque
+sudo mkdir -p /usr/src/disque
+
+sudo curl -sSL "https://github.com/antirez/disque/archive/1.0-rc1.tar.gz" -o disque.tar.gz
+sudo tar -xzf disque.tar.gz -C /usr/src/disque --strip-components=1
+sudo rm disque.tar.gz
+sudo make -C /usr/src/disque
+sudo make -C /usr/src/disque install
+sudo rm -r /usr/src/disque
+sudo mkdir -p /etc/disque
+sudo mkdir -p /var/disque
+sudo mkdir -p /var/log/disque
+sudo mkdir -p /var/run/disque
+sudo chown disque:disque /var/disque
+sudo chown disque:disque /var/log/disque
+sudo chown disque:disque /var/run/disque
+sudo wget https://raw.githubusercontent.com/galdiolo/disque/disque_init_script/utils/disque_init_script -O /etc/init.d/disque-server
+sudo chmod 755 /etc/init.d/disque-server
+sudo wget https://raw.githubusercontent.com/galdiolo/disque/disque_init_script/utils/disque_conf -O /etc/disque/disque.conf
+sudo update-rc.d disque-server defaults
+#sudo update-rc.d -f disque-server remove
+
+#Try running your instance with:
+sudo /etc/init.d/disque-server start
+
+
+# edit service script
+#sudo vi /etc/init.d/disque-server
