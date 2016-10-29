@@ -202,7 +202,8 @@ dir /var/disque
 # The Append Only File is used when you want your server to be able to
 # persist data on disk and recover after a crash.
 
-appendonly no
+#appendonly no
+appendonly yes
 
 # The name of the append only file (default: "appendonly.aof")
 
