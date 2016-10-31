@@ -232,8 +232,8 @@ appendfilename "disque.aof"
 #
 # If unsure, use "everysec".
 
-# appendfsync always
-appendfsync everysec
+appendfsync always
+# appendfsync everysec
 # appendfsync no
 
 # Automatic rewrite of the append only file.
